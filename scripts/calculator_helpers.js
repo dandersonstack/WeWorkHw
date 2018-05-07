@@ -67,11 +67,9 @@ const calculateProRate = function (monthly_price, rental_start_date, rental_end_
     if(selected_month_start_date.isBefore(rental_start_date)
        && selected_month_end_date.isAfter(rental_end_date)) {
         return Math.ceil((rental_end_date.diff(rental_start_date, 'days') / days_in_month ) * monthly_price)
-    } else if( selected_month_start_date.isAfter(rental_start_date) ) { //only the calculate the end of the month
-        console.log('it should calculate the beginning');
+    } else if( selected_month_start_date.isAfter(rental_start_date) ) {
         return Math.ceil((rental_end_date.diff(selected_month_start_date, 'days') / days_in_month ) * monthly_price)
-    } else { //only calculate the beginning of the month
-        console.log('the months are between');
+    } else {
         return Math.ceil((selected_month_end_date.diff(rental_start_date, 'days')  / days_in_month ) * monthly_price)
     }
 };

@@ -55,7 +55,3 @@ class Calculator {
 
 let CalculateProfitsBot = new Calculator();
 CalculateProfitsBot.mainFunction();
-
-module.exports = {
-    Calculator
-};
