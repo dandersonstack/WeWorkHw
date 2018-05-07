@@ -1,8 +1,5 @@
 const Moment = require('moment');
-const {
-    parseCSVFile,
-    validateAndGenerateSelectedMoments,
-    calculateExpectedRevenue} = require('../scripts/calculator_helpers');
+const { calculateExpectedRevenue } = require('../scripts/calculator_helpers');
 
 test('If it calculates for the full month', () => {
     let csv_data_in_json = [{ Capacity: '1', 'Monthly Price': '600', 'Start Day': '2013-01-01', 'End Day': '2015-08-02' }]
