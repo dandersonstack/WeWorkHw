@@ -76,8 +76,14 @@ const calculateProRate = function (monthly_price, rental_start_date, rental_end_
     }
 };
 
+const readToSTDOut = function (month_string, expected_revenue, unresolved_capacity) {
+    console.log(`${month_string}: expected revenue: $${expected_revenue}, expected total capacity of the unreserved offices: ${unresolved_capacity}`)
+};
+
+
 module.exports = {
     parseCSVFile,
     validateAndGenerateSelectedMoments,
-    calculateExpectedRevenue
-}
+    calculateExpectedRevenue,
+    readToSTDOut
+};

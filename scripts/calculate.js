@@ -2,13 +2,13 @@ const fs = require('file-system');
 const {
     parseCSVFile,
     validateAndGenerateSelectedMoments,
-    calculateExpectedRevenue} = require('./calculator_helpers');
+    calculateExpectedRevenue,
+    readToSTDOut} = require('./calculator_helpers');
 
 class Calculator {
     constructor() {
         this.pathToFile = null;
         this.selected_month_string = null;
-        this.parsedCSVFile = null;
     }
 
     grabInputsFromArgs() {
@@ -44,8 +44,7 @@ class Calculator {
             let selected_month_values = validateAndGenerateSelectedMoments(this.selected_month_string);
             let parsedCSVFile = await (parseCSVFile(this.pathToFile));
             let calculatedValues = calculateExpectedRevenue(parsedCSVFile, selected_month_values);
-            console.log(calculatedValues)
-            // readOut(this.selected_month_string, calculatedValues.expected_revenue, calculatedValues.unresolved_office_capacity);
+            readToSTDOut(this.selected_month_string, calculatedValues.expected_revenue, calculatedValues.unresolved_office_capacity);
         } catch(error) {
             console.log(error);
         }
@@ -56,3 +55,7 @@ class Calculator {
 
 let CalculateProfitsBot = new Calculator();
 CalculateProfitsBot.mainFunction();
+
+module.exports = {
+    Calculator
+};
